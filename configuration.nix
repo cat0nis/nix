@@ -88,26 +88,23 @@
     isNormalUser = true;
     description = "Inryatt";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      kdePackages.kate
-    #  thunderbird
-    vscode
-    neovim
-    ];
   };
 
   # Install firefox.
   programs.firefox.enable = true;
-
-  programs.git = {
-     enable = true;
-     settings.user.name="cat0nis";
-     settings.user.email = "inrymail@gmail.com";
-};
+  
+  catppuccin = {
+    enable = true;
+    flavor = "mocha";
+    cursors.enable = true;
+  };
+ 
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+
+  hardware.graphics.enable32Bit = true;
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
