@@ -24,6 +24,20 @@
         ghidra
         screen
         imhex
+        lsd
+
+
+        # hyprland
+        kitty
+        waybar
+        fuzzel
+        mako
+        rofi
+        swaylock
+        #alsamixer
+        #cpupower
+        #fcitx5
+
     ];
 
     programs.git = {
@@ -68,10 +82,19 @@
     catppuccin = {
         enable = true;
         flavor = "mocha";
-        cursors.enable = true;
     };
  
+    wayland.windowManager.hyprland = {
+      enable = true;
+      package = null;
+      portalPackage = null;
+      systemd.enable = false;
+    };
 
+    programs.obsidian = {
+      enable = true;
+      defaultSettings.communityPlugins = ["obsidian-git"];
+    };
 
     home.stateVersion = "25.11"; # no touchy
 }

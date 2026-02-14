@@ -13,10 +13,19 @@
             owner = "catppuccin";
             repo = "nix";
         };
+
+        hyprland = {
+            type = "github";
+            owner = "hyprwm";
+            repo = "Hyprland";
+        };
     };
 
-    outputs = {self, nixpkgs, home-manager, catppuccin,  ...}@inputs: {
+    outputs = {self, nixpkgs, home-manager, catppuccin, hyprland, ...}@inputs: {
         nixosConfigurations.emetselch = nixpkgs.lib.nixosSystem {
+
+            specialArgs = { inherit inputs; };
+
             modules = [
                 ./configuration.nix
                 catppuccin.nixosModules.catppuccin

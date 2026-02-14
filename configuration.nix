@@ -2,8 +2,10 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
-
+{ config, pkgs, inputs, ... }:
+let
+  pkgs-unstable = inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
+in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -101,6 +103,35 @@
   #  cursors.enable = true;
   };
   
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+
+  };
+
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    xdgOpenUsePortal = true;
+    config = {
+      common.default = ["gtk"];
+      hyprland.default = [
+        "gtk"
+        "hyprland"
+      ];
+    };
+  };
+
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+  };
+
+  hardware.graphics = {
+    package = pkgs-unstable.mesa;
+    package32 = pkgs-unstable.pkgsi686Linux.mesa;
+  };
   
 
   # Allow unfree packages
@@ -135,6 +166,26 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
+
+
+
+  
+  nix = {
+    settings = {
+      trusted-users = [
+        "inryatt"
+      ];
+      substituters = [
+      "https://nix-community.cachix.org"
+      "https://hyprland.cachix.org"
+    ];
+    trusted-public-keys = [
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+      ];
+    };
+    
+  };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
