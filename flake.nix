@@ -26,6 +26,7 @@
                     home-manager = {
                         useGlobalPkgs = true;
                         useUserPackages = true;
+                        backupFileExtension = "backup";
                         users.inryatt = {
                             imports = [
                                 ./home.nix
