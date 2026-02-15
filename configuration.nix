@@ -167,7 +167,11 @@ in
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
-
+  fonts.packages = with pkgs; [
+  nerd-fonts.comic-shanns-mono
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.symbols-only
+  ];
 
   
   nix = {

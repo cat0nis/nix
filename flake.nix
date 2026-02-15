@@ -38,7 +38,7 @@
                         backupFileExtension = "backup";
                         users.inryatt = {
                             imports = [
-                                ./home.nix
+                                ./home/home.nix
                                 catppuccin.homeModules.catppuccin
                             ];
                         };

@@ -4,6 +4,9 @@
     home.username = "inryatt";
     home.homeDirectory = "/home/inryatt";
 
+
+    home.file.".config/hypr/hyprland.conf".source = ./hyprland.conf;
+    
     home.packages = with pkgs; [
         neofetch
         vscode
@@ -53,8 +56,15 @@
       syntaxHighlighting.enable = true;
     
       shellAliases = {
-        ls = "ls -la";
         edit = "sudo -e";
+        grep = "grep --color=always";
+        ls = "lsd -A1l";
+        cat = "bat";
+        x = "exit";
+        clr = "clear";
+        vim = "nvim";
+        p3 = "python3";
+        # bonzo ='~/ .config/bonzomatic/run.sh';
       };
     
       history.size = 10000;
@@ -85,7 +95,7 @@
     };
  
     wayland.windowManager.hyprland = {
-      enable = true;
+      enable = false;
       package = null;
       portalPackage = null;
       systemd.enable = false;
