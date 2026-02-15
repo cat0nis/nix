@@ -1,20 +1,36 @@
-{ config, pkgs, ...}:
+{ config, pkgs, lib, ...}:
 
 {
-  home.file.".config/hypr/hyprland.conf".source = ../hyprland.conf;
+  #home.file.".config/hypr/hyprland.conf".source = ../hyprland.conf;
+
+  programs.fuzzel = {
+    enable = true;
+    settings = {
+      colors = {
+          background="1e1e2edd";
+          text="cdd6f4ff";
+          match="f38ba8ff";
+          selection="585b70ff";
+          selection-match="f38ba8ff";
+          selection-text="cdd6f4ff";
+          border="b4befeff";
+      };
+    };
+  };
+
 
   wayland.windowManager.hyprland = {
-    enable = false;
+    enable = true;
     package = null;
     portalPackage = null;
     systemd.enable = false;
 
     settings = {
 
-      monitor = {
+      monitor = [
         "eDP-1,1920x1080@144,0x0,1"
         ",prefered,-1920x0,1"
-      };
+      ];
 
       workspace = "eDP-1,1";
 
@@ -29,7 +45,7 @@
       };
 
       gesture = [
-        "3,horizontal,workspace"
+          "3,horizontal,workspace"
       ];
 
       #-- General ----------------------------------------------------
@@ -42,7 +58,7 @@
           "col.active_border"="0xFF56B6C2";
           "col.inactive_border"="0xFF343A40";
 
-          no_focus_fallback = true;
+          #nostarship_focus_fallback = true;
       };
 
       #-- Decoration ----------------------------------------------------
@@ -106,6 +122,9 @@
 
         # -- Terminal --
         "SUPER,T,exec,kitty"
+
+        # -- Launcher --
+        "SUPER,D,exec, fuzzel"
         
         
         # -- Rofi --
@@ -127,6 +146,7 @@
         ",XF86AudioStop,exec,mpc stop" 
         
         # -- Hyprland --
+        
         "SUPERSHIFT,Q,killactive,"
         #"SUPER,C,killactive,"
         "CTRLALT,Delete,exit,"
@@ -203,7 +223,7 @@
 #        "swww-daemon"
         "discord"
       ];
-    }
+    };
   };
 
 

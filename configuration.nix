@@ -19,7 +19,7 @@ in
   boot.kernelPackages = pkgs.linuxPackages_latest;
   
   networking.hostName = "emetselch"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -115,7 +115,7 @@ in
     enable = true;
     wlr.enable = true;
     xdgOpenUsePortal = true;
-    extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
+    # extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
     config = {
       common.default = ["gtk"];
       hyprland.default = [

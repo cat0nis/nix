@@ -3,13 +3,12 @@
 {
     imports = [
       ./terminal.nix
+      ./hypr
     ];
     
     home.username = "inryatt";
     home.homeDirectory = "/home/inryatt";
 
-
-    
     home.packages = with pkgs; [
         neofetch
         vscode
@@ -52,8 +51,6 @@
       settings.user.email = "inrymail@gmail.com";
     };
 
-    
-
     programs.nh = {
       enable = true;
       clean.enable = true;
@@ -72,5 +69,5 @@
       defaultSettings.communityPlugins = ["obsidian-git"];
     };
 
-    home.stateVersion = "25.11"; # no touchy
+    home.stateVersion = "25.11"; # no touchy uwu
 }
