@@ -1,6 +1,7 @@
 { config, pkgs, lib, ...}:
 {
   home.file.".config/waybar/lizrd.png".source = ./lizrd.png;
+  home.file.".config/waybar/lizrd.mp3".source = ./lizrd.mp3;
 
   programs.waybar = {
     enable = true;
@@ -23,8 +24,6 @@
         "temperature"
         "custom/separator"
         "custom/window-name"
-        "custom/pacman-update-icon"
-        "custom/pacman-update"
         "tray"
         "mpris"
       ];
@@ -190,7 +189,7 @@
       "custom/lizard"={
         "tooltip"=false;
         "format"= "     ";
-        "on-click"="pw-play ~/Downloads/lizard-stereo-1.mp3 --volume 0.3";
+        "on-click"="pw-play ~/.config/waybar/lizrd.mp3 --volume 0.3";
        };
       };
     };
@@ -378,7 +377,7 @@ window#waybar {
 }
 
 #custom-lizard {
-  background-image: url("/home/inryatt/.config/waybar/assets/lizrd.png");
+  background-image: url("~/.config/waybar/lizrd.png");
   font-size: 20px;
   background-position: left;
   background-repeat: no-repeat;
@@ -386,7 +385,7 @@ window#waybar {
 }
 
 /*# sourceMappingURL=style.css.map */
-    ''
+    '';
       
     };
   }

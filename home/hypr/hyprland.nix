@@ -1,7 +1,8 @@
 { config, pkgs, lib, ...}:
 
 {
-  #home.file.".config/hypr/hyprland.conf".source = ../hyprland.conf;
+  #  #home.file.".config/hypr/hyprland.conf".source = ../hyprland.conf;
+  home.file.".config/hypr/scripts/brightness".source = ./scripts/brightness;
 
   programs.fuzzel = {
     enable = true;
@@ -98,6 +99,7 @@
         disable_hyprland_logo = true;
         vfr=true ;
       };
+      "$backlight" = "~/.config/hypr/scripts/brightness";
 
       windowrule = [
         "border_size 0, match:float true" # remove borders from floating 
@@ -222,6 +224,7 @@
         "nm-applet &"
 #        "swww-daemon"
         "discord"
+        "waybar"
       ];
     };
   };
