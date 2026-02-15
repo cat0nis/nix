@@ -9,7 +9,6 @@
     home.homeDirectory = "/home/inryatt";
 
 
-    home.file.".config/hypr/hyprland.conf".source = ../hyprland.conf;
     
     home.packages = with pkgs; [
         neofetch
@@ -18,11 +17,11 @@
         thunderbird
         kdePackages.kate
         discord
+        telegram-desktop
         spotify
         steam
         steamcmd
         steam-run
-        starship
         (python3.withPackages (
           p: with p; [
             pwntools
@@ -55,7 +54,6 @@
 
     
 
-    };
     programs.nh = {
       enable = true;
       clean.enable = true;
@@ -68,12 +66,6 @@
         flavor = "mocha";
     };
  
-    wayland.windowManager.hyprland = {
-      enable = false;
-      package = null;
-      portalPackage = null;
-      systemd.enable = false;
-    };
 
     programs.obsidian = {
       enable = true;
