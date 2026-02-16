@@ -3,6 +3,14 @@
 {
   #  #home.file.".config/hypr/hyprland.conf".source = ../hyprland.conf;
   home.file.".config/hypr/scripts/brightness".source = ./scripts/brightness;
+  home.file.".config/hypr/wallpaper.png".source = ./wallpaper.png;
+
+  home.packages = [
+    pkgs.brightnessctl
+  ];
+  
+  services.polkit-gnome.enable = true;
+  services.mako.enable=true;
 
   programs.fuzzel = {
     enable = true;
@@ -18,6 +26,21 @@
       };
     };
   };
+
+  services.hyprpaper = {
+  enable = true;
+  settings = {
+    preload = [
+      "~/.config/hypr/wallpaper.png"
+    ];
+    wallpaper = [
+      # By display
+      #"DP-2,~/wallpapers/wallpaper2.jpg"
+      # By default/fallback
+      ",~/.config/hypr/wallpaper.png"
+    ];
+  };
+};
 
 
   wayland.windowManager.hyprland = {
@@ -219,12 +242,13 @@
 #        "dbus-update-activation-environment --all WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
 
 #        "hyprpanel"
-        "~/.config/hypr/scripts/startup"
-        "kitty"
+        #"~/.config/hypr/scripts/startup"
+        "kitty &"
         "nm-applet &"
 #        "swww-daemon"
-        "discord"
-        "waybar"
+        "discord &"
+        "waybar &"
+        "hyprpaper"
       ];
     };
   };
