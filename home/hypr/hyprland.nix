@@ -9,6 +9,8 @@
     pkgs.brightnessctl
     pkgs.networkmanagerapplet
     pkgs.hyprpaper
+    pkgs.pwvucontrol
+    pkgs.polybar-pulseaudio-control
   ];
   
   services.polkit-gnome.enable = true;
@@ -30,14 +32,17 @@
   };
 
   services.hyprpaper = {
-  enable = true;
-  settings = {
-    wallpaper = [
-      
-      ",${config.home.homeDirectory}/.config/hypr/wallpaper.jpg"
-      
-    ];
-  };
+    enable = true;
+    settings = {
+      wallpaper = [
+
+        {
+          path = "${config.home.homeDirectory}/.config/hypr/wallpaper.jpg";
+          fit_mode = "cover";
+        }
+
+      ];
+    };
 };
 
 
@@ -158,12 +163,12 @@
         #"SUPER,escape,exec,$lockscreen"
         
         # -- Function keys --
-        ",XF86MonBrightnessUp,exec,$backlight --inc" 
-        ",XF86MonBrightnessDown,exec,$backlight --dec" 
-        ",XF86AudioRaiseVolume,exec,$volume --inc" 
-        ",XF86AudioLowerVolume,exec,$volume --dec" 
-        ",XF86AudioMute,exec,$volume --toggle" 
-        ",XF86AudioMicMute,exec,$volume --toggle-mic" 
+        ",XF86MonBrightnessUp,exec, brightnessctl set +10%" 
+        ",XF86MonBrightnessDown,exec, brightnessctl set 10%-" 
+        ",XF86AudioRaiseVolume,exec, pulseaudio-control --volume-step 5 up"
+        ",XF86AudioLowerVolume,exec, pulseaudio-control --volume-step 5 down" 
+        ",XF86AudioMute,exec,pulseaudio-control togmute" 
+        ",XF86AudioMicMute,exec,pulseaudio-control  --node-type input togmute" 
         ",XF86AudioNext,exec,mpc next" 
         ",XF86AudioPrev,exec,mpc prev" 
         ",XF86AudioPlay,exec,mpc toggle" 

@@ -110,7 +110,7 @@
         "format-icons"= {
           "default"= ["" "" ""];
         };
-        "on-click"= "pavucontrol";
+        "on-click"= "pwvucontrol";
       };
       "battery"= {
         "bat"= "CMB0";
