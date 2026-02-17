@@ -30,6 +30,7 @@
         screen
         imhex
         lsd
+        bat
 
 
         # hyprland
@@ -44,6 +45,11 @@
         #fcitx5
 
     ];
+
+    programs.kitty = {
+      enable = true;
+      #settings = 
+    };
 
     programs.git = {
       enable = true;

@@ -3,10 +3,12 @@
 {
   #  #home.file.".config/hypr/hyprland.conf".source = ../hyprland.conf;
   home.file.".config/hypr/scripts/brightness".source = ./scripts/brightness;
-  home.file.".config/hypr/wallpaper.png".source = ./wallpaper.png;
+  home.file.".config/hypr/wallpaper.jpg".source = ./wallpaper.jpg;
 
   home.packages = [
     pkgs.brightnessctl
+    pkgs.networkmanagerapplet
+    pkgs.hyprpaper
   ];
   
   services.polkit-gnome.enable = true;
@@ -30,14 +32,10 @@
   services.hyprpaper = {
   enable = true;
   settings = {
-    preload = [
-      "~/.config/hypr/wallpaper.png"
-    ];
     wallpaper = [
-      # By display
-      #"DP-2,~/wallpapers/wallpaper2.jpg"
-      # By default/fallback
-      ",~/.config/hypr/wallpaper.png"
+      
+      ",${config.home.homeDirectory}/.config/hypr/wallpaper.jpg"
+      
     ];
   };
 };
@@ -122,8 +120,9 @@
         disable_hyprland_logo = true;
         vfr=true ;
       };
-      "$backlight" = "~/.config/hypr/scripts/brightness";
 
+      "$backlight" =  "${config.home.homeDirectory}/.config/hypr/scripts/brightness";
+      "$volume" = "";
       windowrule = [
         "border_size 0, match:float true" # remove borders from floating 
 
@@ -248,7 +247,7 @@
 #        "swww-daemon"
         "discord &"
         "waybar &"
-        "hyprpaper"
+        "hyprpaper &"
       ];
     };
   };

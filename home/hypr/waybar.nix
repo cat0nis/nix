@@ -95,7 +95,7 @@
       };
       "network"= {
         "format-wifi"= "󰖩 {essid}";
-        "on-click"= "iwgtk";
+        "on-click"= "nm-applet";
         "format-ethernet"= "󰈀 wired";
         "tooltip"= false;
         "format-disconnected"= "Offline";

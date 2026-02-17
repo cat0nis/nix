@@ -30,6 +30,7 @@
     history.ignorePatterns = ["rm *" "pkill *" "cp *"];
 
     initContent = ''
+      bindkey "^H" backward-delete-word
       eval "$(starship init zsh)"
       eval "$(zoxide init --cmd cd zsh)"
     '';

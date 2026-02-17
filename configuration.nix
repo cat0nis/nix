@@ -28,6 +28,12 @@ in
   # Enable networking
   networking.networkmanager.enable = true;
 
+
+  services.gnome.gnome-keyring.enable = true;
+  environment.variables.XDG_RUNTIME_DIR = "/run/user/$UID";
+  security.pam.services.sddm.enableGnomeKeyring = true;
+
+  
   # Set your time zone.
   time.timeZone = "Europe/Lisbon";
 
