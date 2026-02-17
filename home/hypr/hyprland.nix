@@ -37,11 +37,13 @@
       wallpaper = [
 
         {
+          monitor = "eDP-1";
           path = "${config.home.homeDirectory}/.config/hypr/wallpaper.jpg";
           fit_mode = "cover";
         }
 
       ];
+      splash = false;
     };
 };
 
