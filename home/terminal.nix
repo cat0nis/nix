@@ -6,6 +6,13 @@
     pkgs.zoxide
   ];
 
+  programs.kitty = {
+      enable = true;
+      settings =  {
+        window_padding_width = 1;
+      };
+    };
+
   programs.zsh = {
     enable = true;
     enableCompletion = true;

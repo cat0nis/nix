@@ -32,7 +32,7 @@ in
   services.gnome.gnome-keyring.enable = true;
   environment.variables.XDG_RUNTIME_DIR = "/run/user/$UID";
   security.pam.services.sddm.enableGnomeKeyring = true;
-
+  security.pam.services.swaylock = {};
   
   # Set your time zone.
   time.timeZone = "Europe/Lisbon";

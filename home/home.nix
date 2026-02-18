@@ -33,23 +33,15 @@
         bat
 
 
-        # hyprland
         kitty
-        waybar
+        #waybar
         fuzzel
         mako
         rofi
-        swaylock
-        #alsamixer
-        #cpupower
-        #fcitx5
 
     ];
 
-    programs.kitty = {
-      enable = true;
-      #settings = 
-    };
+    
 
     programs.git = {
       enable = true;

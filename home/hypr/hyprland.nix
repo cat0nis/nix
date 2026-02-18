@@ -2,40 +2,44 @@
 
 {
   #  #home.file.".config/hypr/hyprland.conf".source = ../hyprland.conf;
-  home.file.".config/hypr/scripts/brightness".source = ./scripts/brightness;
   home.file.".config/hypr/wallpaper.jpg".source = ./wallpaper.jpg;
   home.file.".config/hypr/lockpaper.jpg".source = ./lockpaper.jpg;
 
-  home.packages = [
-    pkgs.brightnessctl
-    pkgs.networkmanagerapplet
-    pkgs.hyprpaper
-    pkgs.hyprshot
-    pkgs.hyprlock
-    pkgs.grim
-    pkgs.pwvucontrol
-    pkgs.polybar-pulseaudio-control
+  home.packages = with pkgs; [
+    brightnessctl
+    networkmanagerapplet
+    hyprpaper
+    hyprshot
+    grim
+    pwvucontrol
+    polybar-pulseaudio-control
+
+    fuzzel
   ];
   
   services.polkit-gnome.enable = true;
   services.mako.enable=true;
 
+  catppuccin.swaylock.enable = false;
+  programs.swaylock.package = pkgs.swaylock-effects;
   programs.swaylock = {
     enable = true;
     settings = {
       show-failed-attempts = true;
       ignore-empty-password = true;
       hide-keyboard-layout = true;
-      indicator-cps-lock = true;
-      color = "20262CE6";
+      indicator-caps-lock = true;
+      
+      # color = "20262CE6";
       font = "JetBrainsMono Nerd Font";
       font-size =  18;
-      key-hl-color = "74DD91"; 
-      caps-lock-key-hl-color = "75DBE1"; 
-      bs-hl-color = "DB86BA"; 
-      caps-lock-bs-hl-color = "DB86BA"; 
+
+      key-hl-color = lib.mkForce "74DD91"; 
+      caps-lock-key-hl-color = lib.mkForce "75DBE1"; 
+      bs-hl-color = lib.mkForce "DB86BA"; 
+      caps-lock-bs-hl-color = lib.mkForce "DB86BA"; 
 	
-	# Indicator 
+	    # Indicator 
       indicator-radius = 120 ;
       indicator-thickness = 10; 
 	
@@ -69,11 +73,11 @@
       separator-color = "20262C"; 
 	
 	# Text Colors 
-      text-color = "F1FCF9"; 
-      text-clear-color = "F1FCF9"; 
-      text-caps-lock-color = "F1FCF9"; 
-      text-ver-color = "20262C"; 
-      text-wrong-color = "20262C";
+       text-color = "F1FCF9"; 
+       text-clear-color = "F1FCF9"; 
+       text-caps-lock-color = "F1FCF9"; 
+       text-ver-color = "20262C"; 
+       text-wrong-color = "20262C";
       
       effect-pixelate = 10;
       clock = true;
@@ -233,7 +237,10 @@
         #"SUPER,D,exec,$launcher"
         #"SUPER,X,exec,$powermenu"
         #"SUPER,S,exec,$screenshot"
-        #"SUPER,escape,exec,$lockscreen"
+
+
+        # --- Lockscreen ---
+        "SUPER,escape,exec, swaylock"
         
         # -- Function keys --
         ",XF86MonBrightnessUp,exec, brightnessctl set +10%" 
