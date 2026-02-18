@@ -13,7 +13,6 @@
     syntaxHighlighting.enable = true;
   
     shellAliases = {
-      edit = "sudo -e";
       grep = "grep --color=always";
       ls = "lsd -A1l";
       cat = "bat";
@@ -30,9 +29,12 @@
     history.ignorePatterns = ["rm *" "pkill *" "cp *"];
 
     initContent = ''
+      eval $(ssh-agent) 
+      ssh-add ~/dev/sshkeys/github_key
       bindkey "^H" backward-delete-word
       eval "$(starship init zsh)"
       eval "$(zoxide init --cmd cd zsh)"
+      clear
     '';
 
     oh-my-zsh = {

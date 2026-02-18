@@ -21,11 +21,11 @@
         steam
         steamcmd
         steam-run
-        (python3.withPackages (
-          p: with p; [
-            pwntools
-          ]
-        ))
+        #(python3.withPackages (
+        #  p: with p; [
+        #    pwntools
+        #  ]
+        #))
         ghidra
         screen
         imhex
@@ -53,7 +53,7 @@
 
     programs.git = {
       enable = true;
-      settings.user.name="cat0nis";
+      settings.user.name =  "cat0nis";
       settings.user.email = "inrymail@gmail.com";
     };
 
@@ -68,6 +68,7 @@
         enable = true;
         flavor = "mocha";
         accent = "peach";
+        
     };
  
 
