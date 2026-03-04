@@ -144,7 +144,7 @@ in
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-
+  hardware.bluetooth.enable = true;
   hardware.graphics.enable32Bit = true;
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -154,6 +154,7 @@ in
   git
   zsh
   ];
+
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

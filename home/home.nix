@@ -31,13 +31,15 @@
         imhex
         lsd
         bat
+        bluetuith
+        thunderbird
 
 
         kitty
         #waybar
         fuzzel
         mako
-        rofi
+        # rofi
 
     ];
 

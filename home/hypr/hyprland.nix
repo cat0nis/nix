@@ -116,6 +116,11 @@
           path = "${config.home.homeDirectory}/.config/hypr/wallpaper.jpg";
           fit_mode = "cover";
         }
+        {
+          monitor = "HDMI-A-1";
+          path = "${config.home.homeDirectory}/.config/hypr/wallpaper.jpg";
+          fit_mode = "cover";
+        }
 
       ];
       splash = false;
@@ -314,9 +319,10 @@
         "ALT, Tab, cyclenext, bind = ALT, Tab, bringactivetotop, "
 
         # Screenshots
-        ", print, exec, grim $(xdg-user-dir PICTURES)/Screenshots/$(date +'%s_grim.png')"
-        "CTRL, print, exec, grim -g '$(slurp -o)' $(xdg-user-dir PICTURES)/Screenshots/$(date +'%s_grim.png')"
-        "CTRL SHIFT, print, exec, grim -g '$(slurp)' $(xdg-user-dir PICTURES)/Screenshots/$(date +'%s_grim.png')"
+        # ", print, exec, grim $(xdg-user-dir PICTURES)/Screenshots/$(date +'%s_grim.png')"
+        # "CTRL, print, exec, grim -g '$(slurp -o)' $(xdg-user-dir PICTURES)/Screenshots/$(date +'%s_grim.png')"
+        # "CTRL SHIFT, print, exec, grim -g '$(slurp)' $(xdg-user-dir PICTURES)/Scyreenshots/$(date +'%s_grim.png')"
+        ", print, exec, hyprshot -m output -m active -f Screenshots/$(date +'%s_print.png')"
         "SUPERSHIFT, S, exec, hyprshot -m region --clipboard-only"
       ];
 
