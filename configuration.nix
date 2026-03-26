@@ -70,8 +70,17 @@ in
   console.keyMap = "pt-latin1";
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  services.printing = {
+    enable = true;
+      drivers = [ pkgs.hplipWithPlugin ];
+  };
 
+services.devmon.enable = true;
+services.gvfs.enable = true;
+services.udisks2.enable = true;
+
+
+  services.ipp-usb.enable = true;
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
@@ -153,6 +162,7 @@ in
   #  wget
   git
   zsh
+  udiskie
   ];
 
 
@@ -168,7 +178,6 @@ in
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
-
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
