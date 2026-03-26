@@ -27,6 +27,7 @@
       clr = "clear";
       vim = "nvim";
       p3 = "python3";
+      yay = "nix flake update";
       # bonzo ='~/ .config/bonzomatic/run.sh';
     };
   

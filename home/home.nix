@@ -10,8 +10,8 @@
     home.homeDirectory = "/home/inryatt";
 
     home.packages = with pkgs; [
-        neofetch
-        vscode
+        fastfetch
+        vscodium
         neovim
         thunderbird
         kdePackages.kate
@@ -40,6 +40,7 @@
         fuzzel
         mako
         # rofi
+        nssmdns
 
     ];
 
